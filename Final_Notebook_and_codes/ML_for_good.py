@@ -2,7 +2,6 @@
 # coding: utf-8
 
 
-
 import pandas as pd
 import os
 import textract
@@ -27,17 +26,21 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 
-
-
 model = Summarizer()
 uni_encoder = tensorflow_hub.KerasLayer('https://tfhub.dev/google/universal-sentence-encoder/4',trainable=False)
 
 
 
-
-
 #function for preprocessing of word documents comprising of dialogues between Moderators, Parents and Administrator
 def doc_preprocessing(path):
+    """ 
+    Code for preprocessing docx files under focusGroups. The steps involved are:
+    1) Remove irrelevant strings like (silence, [inaudible], next line (\n), extra tabs (\t) etc.)
+    2) We collect each dialogue from the speakers: Parents, Moderators, Speaker, Adminitrator.
+    3) We ultimately want only the Parents'dialogues to get more insights on the impact of lockdown and tech on their children.
+    4) All the dialogues of a Parent are combined for further analysis.
+    5) The function returns a dictionary with keys as Parents and the values as their combined dialogue from the entire doc.
+    """
     text = textract.process(path)
     text = text.decode('utf-8')
     text =text.replace('\n',"")
@@ -74,6 +77,11 @@ def doc_preprocessing(path):
 # we can draw insights from the extracted summaries of dialogues. Either this could be our result or we can work on these summaries further
 #for say, sentiment analysis or clustering.
 def extractive_text_summarization(path):
+    """
+    This function uses the processed data from doc_preprocessing function. We perform an extractive text summarization for each Parents dialogues.
+    We have used the summarizer from gensim package and we also use the Bert summarizer. With these packages, we can extract important text based on word 
+    count, percentage, number of sentences. We had tried key phrase extraction which didn't work well.
+    """
     imp_dial_parents = doc_preprocessing(path)
     # Summary (0.5% of the original content).
     summ_per = [summarize(dialogue.replace(".",". "), ratio = 0.1) for dialogue in list(imp_dial_parents.values())]
@@ -112,8 +120,6 @@ for doc in list_of_docs:
         for key in extract[i].keys():
             mydoc.add_paragraph(key+': '+extract[i].get(key))
     mydoc.save('summ_outputs_'+doc.split('/')[-1])
-
-
 
 
 
@@ -230,6 +236,9 @@ save_xls(list_dfs,xls_path,required_dfs)
 
 
 def sentiment_scores(sentence):
+    """
+    getting sentiment scores for every sentence in crisislogger file.
+    """
     sid_obj = SentimentIntensityAnalyzer()
     sentiment_dict=sid_obj.polarity_scores(sentence)
     Negative_score = sentiment_dict['neg']*100
@@ -242,7 +251,6 @@ def sentiment_scores(sentence):
     else :
         Overall_rate = 'Neutral'
     return Negative_score,Neutral_score,Positive_score,Overall_rate
-
 
 
 
