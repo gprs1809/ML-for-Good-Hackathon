@@ -3,9 +3,11 @@ We have described all the details, like our throught process, approaches, conclu
 
 The IDEs we used are mainly Google Colab and VS.<br>
 
+Python version above 3.8 can be used to run the codes. <br>
+
 There are three 4 main functions: doc_preprocessing, extractive_text_summarization, preprocess_prolificacademic_and_feature_importances and sentiment_scores. Apart from these, there are loops and steps to execute and save the outputs. For more details, please see 'Final_ML_for_good.ipynb'<br>
 
-The following packages need to be installed and imported (also can be seen in our codes).<br>
+The latest versions of the following packages need to be installed and imported as following (also can be seen in our codes).<br>
 
 import pandas as pd <br>
 import os <br>
