@@ -27,7 +27,7 @@ from summarizer import Summarizer <br>
 import docx <br>
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer <br>
 
-After this, the following downloads are necessary:<br>
+After this, the following downloads are necessary (also can be seen in our codes):<br>
 nltk.download('stopwords') <br>
 nltk.download('punkt') <br>
 model = Summarizer() <br>
