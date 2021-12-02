@@ -9,22 +9,26 @@ The following packages need to be installed and imported (also can be seen in ou
 
 import pandas as pd <br>
 import os <br>
-import textract
-import re
-import gensim
-from gensim.summarization.summarizer import summarize
-from gensim.summarization import keywords
-from rake_nltk import Rake
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-from sentence_transformers import SentenceTransformer
-#sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
-import tensorflow as tf
-import tensorflow_hub
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestClassifier
-from summarizer import Summarizer
-import docx
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import textract <br>
+import re <br>
+import gensim<br>
+from gensim.summarization.summarizer import summarize <br>
+from gensim.summarization import keywords <br>
+from rake_nltk import Rake <br>
+import nltk <br>
+from sentence_transformers import SentenceTransformer <br>
+#sbert_model = SentenceTransformer('bert-base-nli-mean-tokens') <br>
+import tensorflow as tf <br>
+import tensorflow_hub <br>
+from sklearn.decomposition import PCA <br>
+from sklearn.preprocessing import StandardScaler <br>
+from sklearn.ensemble import RandomForestClassifier <br>
+from summarizer import Summarizer <br>
+import docx <br>
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer <br>
+
+After this, the following downloads are necessary:<br>
+nltk.download('stopwords') <br>
+nltk.download('punkt') <br>
+model = Summarizer() <br>
+uni_encoder = tensorflow_hub.KerasLayer('https://tfhub.dev/google/universal-sentence-encoder/4',trainable=False)
