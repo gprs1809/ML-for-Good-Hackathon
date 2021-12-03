@@ -20,7 +20,7 @@ We worked on all the data provided independently, we didn't combine any data.
 
 We mainly Google Colab and Visual Studio for implementing. Python version we used is 3.8.5 when we used VS. <br>
 
-The latest versions of the following packages need to be installed and imported or just imported (also can be seen in our codes).<br>
+The latest versions of the following packages need to be installed and imported or just imported (also can be seen in our codes). We used pip to install all the required packages that aren't built-in. The pip commands are also executed from the jupyter notebook, which can be seen in 'Final_ML_for_good.ipynb' <br>
 
 import pandas as pd <br>
 import os <br>
