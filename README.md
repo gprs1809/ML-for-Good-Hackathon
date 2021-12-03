@@ -1,13 +1,26 @@
-Our final codes (a notebook and a .py file) and outputs are in the folder Team 12 submission folder. 
+This repository contains all the work that Team 12 did as an attempt to help the Child Mind Institute.<br>
+
+Our final codes (a notebook and a .py file) and outputs are in the folder Team 12 submission folder. <br>
 We have described all the details, like our throught process, approaches, conclusions etc in the notebook 'Final_ML_for_good.ipynb' which can be found within the folder Final_Notebook_and_codes, which is within Team 12 submission folder. <br>
 
-The IDEs we used are mainly Google Colab and VS.<br>
+Below is a summary of what we have done, the notebook has much more details:<br>
 
-Python version above 3.8 can be used to run the codes. <br>
+We worked on all the data provided independently, we didn't combine any data.
 
-There are three 4 main functions: doc_preprocessing, extractive_text_summarization, preprocess_prolificacademic_and_feature_importances and sentiment_scores. Apart from these, there are loops and steps to execute and save the outputs. For more details, please see 'Final_ML_for_good.ipynb'<br>
+1) For the docx files, we implemented the following:<br>
+             * doc_preprocessing function: This function takes the path of any docx file and processes it. The processing broadly involves replacing irrelevant substrings,    breaking down text into sentences, identifying the starting of any dialogue, removing not so important dialogues, combining dialogues of each speaker.
+             * extractive_text_summarization: This function takes the path of any docx files, processes it using the doc_preprocessing function and then, performs extractive text summarization. We have presented 4 types of extractive text summarization, 2 of which use the Gensim summarizer with ratio and word count as parameters respectively. The other two use the Bert extractive summarizer with ratio and number of sentences as parameters respectively.
 
-The latest versions of the following packages need to be installed and imported as following (also can be seen in our codes).<br>
+2) For each of the csv file under Prolific Academic (Nov 2020 and April 2021, as well as the files for these months under updated data), we implemented the following function:<br>
+             * preprocess_prolificacademic_and_feature_importances: This function takes the path of the csv file, preprocesses it and then, tries to return insights in the form of feature importances. The feature importances are arrived at by fitting a Random Forest classifier where the target feature is taken as 'suspectedinfected'. Before setting the target, there are a bunch of preprocessing steps: remove features with more than 50% NaNs, find the top 19 or 20 features that are most correlated to suspectedidentified among each of int and float features, replace NaNs in the string features with 'Information not available', combine dataframes, removing rows with NaNs, set target as suspectedidentified, get embeddings for each string feature using the Universal Sentence Encoder pretrained model from tensorflow hub, perform PCA to reduce the dimension of embeddings for each string feature to 5, the new features as embeddings are given names as feature_name followed by an index.
+
+3) For the crisis logger csv file, we implemented the function sentiment_scores to get Positive, Negative and Neutral scores for each transcription. We further also return the Overall rating of each transcription with respect to scores, as Positive, Negative or Neutral. <br>
+
+
+
+We mainly Google Colab and Visual Studio for implementing. Python version we used is 3.8.5 when we used VS. <br>
+
+The latest versions of the following packages need to be installed and imported or just imported (also can be seen in our codes).<br>
 
 import pandas as pd <br>
 import os <br>
@@ -32,5 +45,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer <br>
 After this, the following downloads are necessary (also can be seen in our codes):<br>
 nltk.download('stopwords') <br>
 nltk.download('punkt') <br>
-model = Summarizer() <br>
-uni_encoder = tensorflow_hub.KerasLayer('https://tfhub.dev/google/universal-sentence-encoder/4',trainable=False)
+model = Summarizer() (Bert summarizer) <br>
+uni_encoder = tensorflow_hub.KerasLayer('https://tfhub.dev/google/universal-sentence-encoder/4',trainable=False) (downloading the pretrained Universal Sentence Encoder model from Tensorflow Hub.
+
+
