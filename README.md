@@ -32,7 +32,6 @@ from gensim.summarization import keywords <br>
 from rake_nltk import Rake <br>
 import nltk <br>
 from sentence_transformers import SentenceTransformer <br>
-#sbert_model = SentenceTransformer('bert-base-nli-mean-tokens') <br>
 import tensorflow as tf <br>
 import tensorflow_hub <br>
 from sklearn.decomposition import PCA <br>
@@ -47,5 +46,3 @@ nltk.download('stopwords') <br>
 nltk.download('punkt') <br>
 model = Summarizer() (Bert summarizer) <br>
 uni_encoder = tensorflow_hub.KerasLayer('https://tfhub.dev/google/universal-sentence-encoder/4',trainable=False) (downloading the pretrained Universal Sentence Encoder model from Tensorflow Hub.
-
-
