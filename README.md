@@ -1,9 +1,9 @@
 This repository contains all the work that Team 12 did as an attempt to help the Child Mind Institute.<br>
 
 Our final codes (a notebook and a .py file) and outputs are in the folder Team 12 submission folder. <br>
-We have described all the details, like our throught process, approaches, conclusions etc in the notebook 'Final_ML_for_good.ipynb' which can be found within the folder Final_Notebook_and_codes, which is within Team 12 submission folder. <br>
+We have described all the details, like our throught process, approaches, difficulties faced, potential drawbacks, conclusions etc in the notebook 'Final_ML_for_good.ipynb' which can be found within the folder Final_Notebook_and_codes, which is within Team 12 submission folder. <br>
 
-Below is a summary of what we have done, the notebook has much more details:<br>
+Below is a summary of what we have done, the notebook has more details:<br>
 
 We worked on all the data provided independently, we didn't combine any data.
 
